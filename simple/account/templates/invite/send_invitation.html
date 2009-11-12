@@ -1,0 +1,14 @@
+{% extends "shop/base.html" %}
+
+{% block content %}
+
+<form action="/invite/" method="POST">
+    {{ form.as_p|safe }}
+    <input type="submit" value="Submit" />
+</form>
+
+{% if status %}
+    <h3> 邀请送出 </h3>
+{% endif %}
+
+{% endblock %}

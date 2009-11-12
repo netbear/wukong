@@ -1,0 +1,10 @@
+{% extends "shop/base.html" %}
+
+{% block content %}
+
+    <ul class="profile">
+        <li> {{user_data.user.first_name}}'s credits:  </li>
+        <li> {{user_data.credits}} </li>
+    </ul>
+
+{% endblock %}

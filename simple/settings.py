@@ -131,6 +131,7 @@ INSTALLED_APPS = (
     #'debug_toolbar',
     'app_plugins',
     'simple.localsite',
+    'simple.account',
 )
 
 AUTHENTICATION_BACKENDS = (
