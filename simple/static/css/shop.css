@@ -1,0 +1,175 @@
+
+#container {
+height: 100%;
+width: 100%;
+margin-top: 0;
+margin-bottom: -31px;
+z-index: 3;
+}
+
+#top h1{
+margin: 0px;
+color: #999590;
+}
+
+#navbar {
+margin: 0;
+padding: 0;
+background: #FFCB2D;
+overflow: auto;
+}
+
+#navbar ul {
+float: left;
+margin: 0;
+padding: 10px 0 0 40px;
+list-style: none;
+}
+
+#navbar li {
+float: left;
+margin: 0 1px 0 0;
+padding: 0;
+}
+
+#navbar li {
+width: 100px;
+padding: 4px 8px;
+color: #333;
+border: 1px solid #9B8748;
+border-bottom: none;
+background: #F9E9A9;
+}
+
+#navbar ul li:hover {
+color: #333;
+background: #fff url(/static/images/on_bg.gif) repeat-x top left;
+}
+
+#navbar a {
+text-decoration: none;
+display: block;
+color: #333;
+}
+
+#content {
+z-index: 9;
+position: relative;
+}
+
+input {
+border: none;
+padding: 0.333em;
+}
+
+#register_form_container {
+position: absolute;
+left: 25%;
+top : 50%;
+margin-top: 2em;
+padding: 1em 4em;
+background: black;
+opacity: 0.8;
+color: white;
+}
+
+#register_form_container dd {
+margin: 10px 0;
+}
+
+button#sign_in {
+background: transparent;
+border: none;
+cursor: pointer;
+padding: 0;
+}
+
+.signin-button {
+position: relative;
+float: left;
+width: 100px;
+height: 40px;
+}
+
+.signin-button div {
+overflow: hidden;
+height: 100%;
+}
+
+.signin-button .left {
+left: 0;
+position: absolute;
+width: 80%
+}
+
+.signin-button .right {
+left: 80%;
+position: absolute;
+width: 20%;
+}
+
+.signin-button .right img {
+right: 0;
+position: absolute;
+}
+
+.signin-button .text {
+left: 0;
+position: absolute;
+text-align: center;
+width: 99%;
+height: 90%;
+font-size: 1.2em;
+line-height: 2em;
+font-weight: bold;
+color: white;
+}
+
+.background {
+width: 100%;
+height: 100%;
+position: absolute;
+overflow: hidden;
+top: 0;
+}
+
+.background img {
+left: 0;
+top: 0;
+width: 100%;
+position: absolute;
+z-index: -1;
+}
+
+#footer {
+border-top: 1px solid #313232;
+height: 30px;
+background: #000000 url(/static/images/login_footer_gradient.png) repeat-x scroll left top;
+font-size: 10px;
+width: 100%;
+color: #999590;
+position: relative;
+top: 0;
+left: 0;
+}
+
+#footer #copyright {
+float: right;
+padding: 10px 15px 0 0;
+}
+
+#footer #links {
+float: left;
+padding: 10px 0 0 5px;
+}
+
+body {
+overflow: hidden;
+}
+
+html, body {
+height: 100%;
+margin: 0;
+padding: 0;
+max-height: 100%
+}

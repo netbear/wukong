@@ -1,0 +1,53 @@
+{% load i18n satchmo_category satchmo_google satchmo_util satchmo_currency satchmo_discounts app_plugins normalize_decimal %}
+{% block doctype %}<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+{% endblock %}
+<head>
+    {% block extra-head %}{% endblock %}
+    {% block stylesheet %}
+        <link rel="stylesheet" href="{{ media_url }}css/shop.css" />
+    {% endblock %}
+    <title>{% block title %}{{ shop_name }}{% if pagetitle %}: {{ pagetitle }}{% endif %}{% endblock %}</title>
+    {% plugin_point "page_head" %}
+</head>
+{% block body %}
+<body{% if bodyid %} id="{{ bodyid }}"{% endif %}{% if bodyclass %} class="{{ bodyclass }}"{% endif %}>
+    {% plugin_point "page_top" %}
+    <div id="container">
+	    <div id="top">
+	        <h1>{{ shop_name }}</h1>
+	    </div>
+
+	    <div id="content">
+	        {% block content %}{% endblock %}
+	    </div>
+
+        <div class="background">
+<img src="/static/images/login_background.jpg"/>
+        </div>
+    </div>
+
+	<div id="footer">
+		{% block footer %}
+        <span id="links">
+		{% blocktrans %}Powered by Ringo Guo. {% endblocktrans %}
+		{% endblock %}
+        </span>
+        <span id="copyright">
+        @2009 Netbear INC All rights reserved.
+        </span> 
+	</div>
+
+	{% block page-close %}
+    {% block google-tracker %}
+    {% if shop.options.GOOGLE.ANALYTICS.value %}
+        {% show_tracker is_secure %}
+    {% endif %}
+{% endblock %}
+	{% endblock %}
+</body>
+{% endblock %}
+</html>

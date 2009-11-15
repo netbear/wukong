@@ -42,4 +42,13 @@ def invite_friends(request):
 
     return render_to_response('invite/send_invitation.html', context)
 
-
+def register(request, invitation_code):
+    """ register a invited user """
+    invitation_code = invitation_code.lower()
+    user = Invitation.objects.validate_invitation(invitation_code)
+    if user:
+        import satchmo_store.accounts.views as _
+        return _.register(request)
+    else:
+        context = RequestContext(request)
+        return render_to_response('invite/invalid_invitation.html', context)

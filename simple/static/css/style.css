@@ -12,10 +12,10 @@ margin-top: 0;
 }
 
 #navbar {
-width: 100%;
+/*width: 100%;*/
 background-color: #fff;
 color: #333;
-line-height: 90%;	
+line-height: 90%;
 border: none;
 border-bottom: 1px solid silver;
 }
@@ -317,8 +317,9 @@ img {
     color: red;
 }
 
-/* =============== Navigation Bars ===================== */
 
+/* =============== Navigation Bars ===================== */
+/*
 #navbar ul {		
 	margin: 1em;
 	padding: 0px;
@@ -336,7 +337,7 @@ img {
 	padding-left: 0em; 
 	border-left: none; 
 }
-
+*/
 .recentview h3 {
 	padding-bottom: 10px;
 }
