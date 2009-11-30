@@ -68,8 +68,8 @@ logging.basicConfig(level=logging.DEBUG,
                     format='%(asctime)s %(name)-12s %(levelname)-8s %(message)s',
                     datefmt='%a, %d %b %Y %H:%M:%S')
 
-#fileLog = logging.FileHandler(os.path.join(DIRNAME, LOGFILE), 'w')
-#fileLog.setLevel(logging.DEBUG)
+fileLog = logging.FileHandler(os.path.join(DIRNAME, LOGFILE), 'w')
+fileLog.setLevel(logging.DEBUG)
 # add the handler to the root logger
 #logging.getLogger('').addHandler(fileLog)
 logging.getLogger('keyedcache').setLevel(logging.INFO)

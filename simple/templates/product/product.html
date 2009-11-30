@@ -1,0 +1,87 @@
+{% extends "shop/base.html" %}
+{% comment %}
+-------------------------------------------------------------------
+This is the base product detail page.
+To modify the templates of specific types of products, such as
+ProductVariations or CustomProducts, look for product/detail_xxx.html
+-------------------------------------------------------------------
+{% endcomment %}
+{% load i18n %}
+{% load thumbnail %}
+{% load satchmo_price %}
+{% load satchmo_currency satchmo_category %}
+{% load satchmo_util satchmo_discounts %}
+{% load app_plugins %}
+
+{% block extra-head %}
+{% if product.meta %}
+    <meta name="description" content="{{product.meta}}">
+{% endif %}
+<script src="{{ media_url }}js/jquery.js" type="text/javascript"></script>
+<script src="{{ media_url }}js/jquery.jcarousel.pack.js" type="text/javascript"></script>
+<script src="{{ media_url }}js/jqzoom.pack.1.0.1.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="{{ media_url }}/css/jquery.jcarousel.css" />
+<link rel="stylesheet" type="text/css" href="{{ media_url }}/images/skins/tango/skin.css" />
+<script>
+function selectImage(img) {
+    $("#productImage img")[0].src = img.src
+}
+$(document).ready(function() {
+    $("#productlist").jcarousel();
+{% comment %}
+    $(".jqzoom").jqzoom();
+{% endcomment %}
+});
+</script>
+{% endblock %}
+
+{% block navbar %}
+<li class="first"><a href="{{ shop_base }}/">{% trans "Home" %}</a></li>
+{% for name, url in product.category.all.0.get_url_name %}
+    <li><a href="{{ url }}">{{ name }}</a></li>
+{% endfor %}
+<li>{{ product.translated_name }}</li>
+{% endblock %}
+
+{% block content %}
+{% block productdetail %}
+<h4>{{ product.translated_name }}</h4>
+<p>{{ product.translated_description }}</p>
+{% trans "Price" %} {% if default_view_tax %} {% trans '(incl. tax)' %}{% endif %}:
+<h3>
+	{% if sale %}<strike id="fullprice" style="display: block;">{{ product|discount_price:""|currency }}</strike>{% endif %}
+	<span id="price">{{ product|discount_price:sale|currency }}</span>
+</h3>
+<div id="productImage" style="margin-bottom : 5px ">
+    {% thumbnail product.productimage_set.all.0.picture 280x280 as image %}
+    <img src="{{image}}" width="{{ image.width }}" height="{{ image.height }}" />
+</div>
+<div id="productThumbnail">
+<ul id="productlist" class="jcarousel-skin-tango">
+{% for pic in product.productimage_set.all %}
+    {% thumbnail pic.picture 280x280 as image %}
+    <li>
+{% comment %}
+    <img src="{{ image }}" width="{{ image.width }}" height="{{ image.height }}" />
+{% endcomment %}
+    <img src="{{ image }}" width=75 onMouseOver=selectImage(this) />
+    </li>
+{% endfor %}
+</ul>
+</div>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+<form id="options" action="{% url satchmo_smart_add %}" method="post">
+{% trans "Quantity" %} <input type="text" size="5" name="quantity" id="quantity" value="1" class="priced" />
+<input type="hidden" name="productname" id="productname" value="{{product.slug}}" />
+<input type="submit" name="addcart" value="{% trans "Add to cart" %}" />
+{% plugin_point "product_add_buttons" %}
+{% plugin_point "product_form" %}
+</form>
+{% endblock %}
+
+{% block productfooter %}
+{% if sale %}{% include "product/product_discount_eligible.html" %}{% endif %}
+{% plugin_point "product_footer" %}
+{% endblock %}
+{% endblock %}

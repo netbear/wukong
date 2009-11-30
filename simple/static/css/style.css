@@ -1,8 +1,8 @@
 /* @override http://localhost:8000/static/css/style.css */
 
 #container {
-width: 90%;
-margin: 10px auto;
+/*width: 90%;*/
+margin: 0;
 background-color: #fff;
 color: #333;
 border: 1px solid gray;

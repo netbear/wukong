@@ -14,7 +14,7 @@ html, body {
   padding: 0; /*remove padding */
   margin: 0; /* remove margins */
   border: 0; /* remove borders */
-  /*overflow: auto;*/
+  overflow: auto;
   background-color: black;
   width: 100%;
 }
@@ -25,10 +25,13 @@ body {
 }
 
 #container {
+display: block;
 position: relative;
+height: 100%;
 width: 100%;
+margin-top: 0;
+margin-bottom: -31px;
 z-index: 3;
-overflow: auto;
 }
 
 #top h1{
@@ -169,6 +172,7 @@ border-top: 1px solid #313232;
 height: 30px;
 background: #000000 url(/static/images/login_footer_gradient.png) repeat-x scroll left top;
 font-size: 10px;
+width: 100%;
 color: #999590;
 position: relative;
 z-index: 5;
